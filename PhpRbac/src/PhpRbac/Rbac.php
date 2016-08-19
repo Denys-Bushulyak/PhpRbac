@@ -24,11 +24,7 @@ class Rbac
             $user = isset($config['user']) ? $config['user'] : "root";
             $pass = isset($config['pass']) ? $config['pass'] : "";
             $tablePrefix = isset($config['prefix']) ? $config['prefix'] : "phprbac_";
-            $dbname =  isset($config['db_name']) ? $config['db_name'] : false;
-
-            if(!$dbname){
-                throw new ConfigurationException("db_name",$config['db_name']);
-            }
+            $dbname = isset($config['db_name']) ? $config['db_name'] : false;
         }
 
         require_once 'core/lib/Jf.php';
