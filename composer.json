@@ -9,6 +9,12 @@
         "permissions",
         "roles"
     ],
+    "require": {
+        "php": "5.3",
+        "ext-PDO": "*",
+        "ext-sqlite3": "*",
+        "ext-mysqli": "*"
+    },
     "homepage": "http://phprbac.net/",
     "license": "Apache-2.0",
     "authors": [
@@ -27,7 +33,7 @@
         {
             "name": "Denys Bushulyak",
             "email": "apollo128@gmail.com",
-            "role": "Forker"
+            "role": "Forker & improver"
         }
     ],
     "autoload": {
