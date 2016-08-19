@@ -14,16 +14,16 @@ use PhpRbac\Exceptions\ConfigurationException;
  */
 class Rbac
 {
-    public function __construct($config = '')
+    public function __construct($_host, $db_name = null, $_user = null, $_password = null, $table_prefix = '')
     {
-        if ((string)$config === 'unit_test') {
+        if ((string)$_host === 'unit_test') {
             require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
         } else {
-            $host = isset($config['host']) ? $config['host'] : "localhost";
-            $user = isset($config['user']) ? $config['user'] : "root";
-            $pass = isset($config['pass']) ? $config['pass'] : "";
-            $tablePrefix = isset($config['prefix']) ? $config['prefix'] : "rbac_";
-            $dbname = isset($config['db_name']) ? $config['db_name'] : 'rbac';
+            $host = $_host;
+            $user = $_user;
+            $pass = $_password;
+            $tablePrefix = $tablePrefix;
+            $dbname = $db_name;
         }
 
         require_once 'core/lib/Jf.php';
