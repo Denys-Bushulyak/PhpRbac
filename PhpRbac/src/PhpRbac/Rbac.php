@@ -22,7 +22,7 @@ class Rbac
             $host = $_host;
             $user = $_user;
             $pass = $_password;
-            $tablePrefix = $tablePrefix;
+            $tablePrefix = $table_prefix;
             $dbname = $db_name;
         }
 
