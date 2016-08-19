@@ -19,12 +19,11 @@ class Rbac
         if ((string)$config === 'unit_test') {
             require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
         } else {
-            $adapter = isset($config['adapter']) ? $config['adapter'] : "pdo_sqlite";
             $host = isset($config['host']) ? $config['host'] : "localhost";
             $user = isset($config['user']) ? $config['user'] : "root";
             $pass = isset($config['pass']) ? $config['pass'] : "";
-            $tablePrefix = isset($config['prefix']) ? $config['prefix'] : "phprbac_";
-            $dbname = isset($config['db_name']) ? $config['db_name'] : false;
+            $tablePrefix = isset($config['prefix']) ? $config['prefix'] : "rbac_";
+            $dbname = isset($config['db_name']) ? $config['db_name'] : 'rbac';
         }
 
         require_once 'core/lib/Jf.php';
