@@ -2,6 +2,7 @@
 namespace PhpRbac;
 
 use \Jf;
+use PhpRbac\Exceptions\ConfigurationException;
 
 /**
  * @file
@@ -13,12 +14,21 @@ use \Jf;
  */
 class Rbac
 {
-    public function __construct($unit_test = '')
+    public function __construct($config = '')
     {
-        if ((string) $unit_test === 'unit_test') {
+        if ((string)$config === 'unit_test') {
             require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
         } else {
-            require_once dirname(dirname(__DIR__)) . '/database/database.config';
+            $adapter = $config['adapter'] ?: "pdo_sqlite";
+            $host = $config['host'] ?: "localhost";
+            $user = $config['user'] ?: "root";
+            $pass = $config['pass'] ?: "";
+            $tablePrefix = $config['prefix'] ?: "phprbac_";
+            $dbname =  $config['db_name'] ?: false;
+
+            if(!$dbname){
+                throw new ConfigurationException("db_name",$config['db_name']);
+            }
         }
 
         require_once 'core/lib/Jf.php';
