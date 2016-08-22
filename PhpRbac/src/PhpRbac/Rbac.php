@@ -2,7 +2,6 @@
 namespace PhpRbac;
 
 use \Jf;
-use PhpRbac\Exceptions\ConfigurationException;
 
 /**
  * @file
