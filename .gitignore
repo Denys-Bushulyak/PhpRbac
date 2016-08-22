@@ -1,6 +1,7 @@
 .settings
 .buildpath
 .project
+.idea
 *bak*
 *draft*
 *phprbac.sqlite3*
