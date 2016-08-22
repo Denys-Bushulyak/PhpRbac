@@ -351,47 +351,4 @@ class BaseNestedSet implements NestedSetInterface
             ORDER BY node.{$this->left()}");
         return $Res;
     }
-    /**
-     * This function converts a 2D array with Depth fields into a multidimensional tree in an associative array
-     *
-     * @param Array $Result
-     * @return Array Tree
-     */
-    #FIXME: think how to implement this!
-    /**
-    function Result2Tree($Result)
-    {
-        $out=array();
-        $stack=array();
-        $cur=&$out;
-        foreach($Result as $R)
-        {
-            if ($cur[$LastKey]['Depth']==$R['Depth'])
-            {
-                echo "adding 0 ".$R['Title'].BR;
-                $cur[$R[$this->id()]]=$R;
-                $LastKey=$R[$this->id()];
-            }
-            elseif ($cur[$LastKey]['Depth']<$R['Depth'])
-            {
-                echo "adding 1 ".$R['Title'].BR;
-                array_push($stack,$cur);
-                $cur=&$cur[$LastKey];
-                $cur[$R[$this->id()]]=$R;
-                $LastKey=$R[$this->id()];
-            }
-            elseif ($cur[$LastKey]['Depth']>$R['Depth'])
-            {
-                echo "adding 2 ".$R['Title'].BR;
-                $cur=array_pop($stack);
-                $cur[$R[$this->id()]]=$R;
-                $LastKey=$R[$this->id()];
-            }
-            
-        }
-        return $out;
-    }
-	/**/
 }
-
-?>

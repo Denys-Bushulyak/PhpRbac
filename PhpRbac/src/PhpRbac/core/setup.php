@@ -3,16 +3,9 @@
 
 if ($adapter=="pdo_mysql")
 {
-	try {
+
 		Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
-	}
-	catch (PDOException $e)
-	{
-		if ($e->getCode()==1049) //database not found
-			installPdoMysql($host,$user,$pass,$dbname);
-		else
-			throw $e;
-	}
+
 }
 elseif ($adapter=="pdo_sqlite")
 {
@@ -25,8 +18,6 @@ elseif ($adapter=="pdo_sqlite")
 else # default to mysqli
 {
 	@Jf::$Db=new mysqli($host,$user,$pass,$dbname);
-	if(jf::$Db->connect_errno==1049)
-		installMysqli($host,$user,$pass,$dbname);
 }
 function getSqls($dbms)
 {
@@ -48,11 +39,9 @@ function installPdoMysql($host,$user,$pass,$dbname)
 }
 function installPdoSqlite($host,$user,$pass,$dbname)
 {
+    touch(storage_path(env('RBAC_DATABASE')));
+
 	Jf::$Db=new PDO("sqlite:{$dbname}",$user,$pass);
-	$sqls=getSqls("sqlite");
-	if (is_array($sqls))
-		foreach ($sqls as $query)
-		Jf::$Db->query($query);
 	Jf::$Rbac->reset(true);
 }
 function installMysqli($host,$user,$pass,$dbname)

@@ -13,27 +13,12 @@ use \Jf;
  */
 class Rbac
 {
-    /**
-     * Rbac constructor.
-     * @param string $adapter "pdo_sqlite"|"pdo_mysql"
-     * @param $_host
-     * @param null $db_name
-     * @param null $_user
-     * @param null $_password
-     * @param string $table_prefix
-     */
-    public function __construct($adapter = 'pdo_sqlite', $_host, $db_name = null, $_user = null, $_password = null, $table_prefix = '')
+    public function __construct($adapter, $host, $database, $username, $password, $prefix)
     {
-        if ((string)$_host === 'unit_test') {
-            require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
-        } else {
-            $adapter = $adapter;
-            $host = $_host;
-            $user = $_user;
-            $pass = $_password;
-            $tablePrefix = $table_prefix;
-            $dbname = $db_name;
-        }
+        $tablePrefix = $prefix;
+        $dbname = $database;
+        $user = $username;
+        $pass = $password;
 
         require_once 'core/lib/Jf.php';
 
