@@ -10,7 +10,7 @@
         "roles"
     ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=7",
         "ext-PDO": "*",
         "ext-sqlite3": "*",
         "ext-mysqli": "*"
